@@ -68,7 +68,7 @@ public class Array {
             arr[i] = arr[i+1];
         }
         size--;
-        return false;
+        return true;
     }
 
     public static void main (String[] args){
