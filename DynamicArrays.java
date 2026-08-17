@@ -1,11 +1,10 @@
+public class DynamicArrays {
 
-public class Array {
-
-    int[] arr;
+        int[] arr;
     int size;
     int capacity;
 
-    public Array(int capacity) {
+    public DynamicArrays(int capacity) {
         this.capacity = capacity;
         size = 0;
         arr = new int[capacity];
@@ -13,10 +12,15 @@ public class Array {
     }
 
     boolean insert (int index, int element){
-        if(index < 0 || size >= capacity || index > size){
+        if(index < 0 || index > size){
             System.out.println("Cant Insert");
             return false;
         }
+
+        if(size >= capacity ){
+            resize();
+        }
+
         for(int i=size; i > index; i--){
             arr[i] = arr[i-1];
         } 
@@ -70,15 +74,37 @@ public class Array {
         return true;
     }
 
+    void resize(){
+        //int newCapacity = 2*capacity;
+
+        capacity = 2*capacity;
+        //int [] newArr = new int[newCapacity];
+                int [] newArr = new int[capacity];
+
+        for(int i=0; i<size; i++)
+        {
+            newArr[i] = arr[i];
+        }
+
+        arr = newArr;
+        //capacity = newCapacity;
+
+    }
+
     public static void main (String[] args){
 
-        Array arr1 = new Array(5);
+        DynamicArrays arr1 = new DynamicArrays(5);
 
         arr1.insert(0, 5);
         arr1.insert(1, 15);
         arr1.insert(2, 10);
         arr1.insert(3, 20);
         arr1.insert(4, 30);
+        arr1.insert(5, 40);
+        arr1.insert(6, 50);
+
+        System.out.println("Size of Arrya = " + arr1.capacity);
+
 
         arr1.display();
 
@@ -93,5 +119,5 @@ public class Array {
         System.out.println("Search Value = " + arr1.search(20));
 
     }
-
+    
 }
