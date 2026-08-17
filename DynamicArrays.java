@@ -1,6 +1,6 @@
 public class DynamicArrays {
 
-        int[] arr;
+    int[] arr;
     int size;
     int capacity;
 
@@ -79,7 +79,7 @@ public class DynamicArrays {
 
         capacity = 2*capacity;
         //int [] newArr = new int[newCapacity];
-                int [] newArr = new int[capacity];
+        int [] newArr = new int[capacity];
 
         for(int i=0; i<size; i++)
         {
